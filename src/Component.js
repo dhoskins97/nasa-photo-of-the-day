@@ -6,7 +6,7 @@ const Component = (props) => {
     return (
         <div className="appContainer">
             <div className="imgContainer">
-                <iframe src={props.url}></iframe>
+                <img src={props.url}></img>
             </div>
 
             <div className="textContainer">

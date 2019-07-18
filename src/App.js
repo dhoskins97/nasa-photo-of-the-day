@@ -1,19 +1,21 @@
 import React, { useState , useEffect } from "react";
 import "./App.scss";
-import Component from './Component';
-import axios from 'axios';
-
+import Component from "./Component.js";
+import axios from "axios";
 
 function App() {
-  const [photoObject, setPhotoObject] = useState({});
-  useEffect ( () => {
-    axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`).then( (res) => {
-      setPhotoObject(res.data)
+  
+  const [apodObject, setApodObject] = useState({});
+
+  useEffect( () => {
+    axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`).then( res => {
+      setApodObject(res.data)
     })
   }, [])
+  
   return (
     <div className="App">
-      <Component url={photoObject.url} title={photoObject.title} explanation={photoObject.explanation} />
+      <Component title={apodObject.title} url={apodObject.url} explanation={apodObject.explanation} />
     </div>
   );
 }
